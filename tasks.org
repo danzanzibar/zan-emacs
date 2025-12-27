@@ -3,5 +3,9 @@
 * To Fix^f :fix:
 ** TODO Reduce complexity of org-capture functions. Maybe use a config file (or single heading?) for each agenda file.
 ** TODO Make project dired open files outside of dired buffer intelligently.
+<<<<<<< HEAD
 ** TODO Remove all pdf stuff from min-config
 ** TODO Make org-agenda work with project agendas in min-config
+=======
+** TODO Fix java and other programming keybinding not loading
+>>>>>>> origin/main
