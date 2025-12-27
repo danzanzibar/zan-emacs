@@ -97,6 +97,26 @@ The notion here is that my core computers will have a synchronized drive with fi
        (window-height . 0.7)
        (window-parameters . ((no-delete-other-windows . t))))))
 #+end_src
+** Project run function.
+#+begin_src emacs-lisp  
+  (defvar zanv-run-command ""
+    "Used to define a project run command to be passed to the 'compile' command.")
+
+  (defun zanf-project-run ()
+    "Runs a 'compile' command using the value of 'zanv-run-command'.
+
+  'zanv-run-command' should be set in a .dir-locals.el file for a givne project."
+    (declare (interactive-only compile))
+    (interactive)
+    (let ((default-directory (project-root (project-current t)))
+  	(compilation-buffer-name-function
+  	 (or project-compilation-buffer-name-function
+               compilation-buffer-name-function))
+  	(saved-compile-command compile-command)
+  	(compile-command zanv-run-command))
+      (call-interactively #'compile)
+      (setq compile-command saved-compile-command)))
+#+end_src
 ** Others (needs clean up).
 #+begin_src emacs-lisp
   ;;; Insert filename.
@@ -800,6 +820,7 @@ No longer used as use-package fulfills this need. But still interesting.
     (("C-x C-c" . save-buffers-kill-emacs)
      ("C-x r m" . zanf-bookmark-set)
      ("C-x p d" . zanf-project-dired)
+     ("C-x p R" . zanf-project-run)
      :map
      zan-global-keymap
      ("s" . zanf-snippet-insert-at-point)
