@@ -818,6 +818,7 @@ No longer used as use-package fulfills this need. But still interesting.
      zan-global-keymap
      ("s" . zanf-snippet-insert-at-point)
      ("m" . magit-list-repos)
+     ("M" . man)
      ("f" . zanf-insert-filename)
      ("w" . window-toggle-side-windows)
      ("b" . zanf-toggle-user-display-buffer-alist)
